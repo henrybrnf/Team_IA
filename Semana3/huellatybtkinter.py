@@ -85,7 +85,7 @@ class FingerprintApp:
         self._update_image_label(self.lbl_thinned, adelgazado)
         self.master.update_idletasks()
         
-        # --- LLAMADA CORREGIDA: ya no se le pasa la imagen gris original ---
+        # --- LLAMADA: ---
         img_remarcada, terminaciones, bifurcaciones = self.analizar_y_remarcar(adelgazado)
         self._update_image_label(self.lbl_final, img_remarcada)
         
@@ -107,7 +107,7 @@ class FingerprintApp:
                         Img[i, j] = int(not should_be_removed)
         return Img
 
-    # --- FUNCIÓN CORREGIDA ---
+    # --- FUNCIÓN ---
     def analizar_y_remarcar(self, Img):
         # La función ahora solo necesita la imagen adelgazada (Img)
         T = np.zeros((self.m, self.n))
@@ -129,7 +129,7 @@ class FingerprintApp:
         
         terminacion, bifurcacion = 0, 0
         
-        # --- CAMBIO PRINCIPAL: Crear el lienzo a partir del esqueleto ---
+        # --- Crear el lienzo a partir del esqueleto ---
         esqueleto_uint8 = (Img * 255).astype(np.uint8)
         img_para_dibujar = cv2.cvtColor(esqueleto_uint8, cv2.COLOR_GRAY2RGB)
         
