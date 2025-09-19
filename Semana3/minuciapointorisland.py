@@ -7,8 +7,8 @@ import cv2
 class IslandFinderApp:
     def __init__(self, master):
         self.master = master
-        self.master.title("Analizador de Huellas Dactilares - Detección de Isla/Punto (v3 Mejorado)")
-        self.master.geometry("1800x950") # Ampliamos un poco la ventana para el nuevo panel
+        self.master.title("Analizador de Huellas Dactilares - Detección de Isla/Punto")
+        self.master.geometry("1800x950")
 
         self.original_pil_image = None
         self.display_size = (350, 350)
@@ -89,7 +89,7 @@ class IslandFinderApp:
             self._update_image_label(self.lbl_binarized, binarized_np)
             self.master.update_idletasks()
             
-            # 2. **NUEVO PASO: Limpieza Morfológica**
+            # 2. **Limpieza Morfológica**
             kernel = np.ones((3,3), np.uint8)
             # La apertura (MORPH_OPEN) elimina el ruido tipo "sal" (puntos blancos aislados)
             cleaned_np = cv2.morphologyEx(binarized_np, cv2.MORPH_OPEN, kernel, iterations=1)
